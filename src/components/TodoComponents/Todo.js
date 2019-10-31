@@ -5,7 +5,7 @@ const Todo = props => {
   const handleClick = e => {
     e.preventDefault();
     props.toggleCompleted(props.todo.id);
-    console.log(props.todo.completed);
+    console.log(!props.todo.completed);
   };
   return (
     <div
