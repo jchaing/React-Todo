@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from '../src/components/TodoComponents/TodoList';
 import TodoForm from '../src/components/TodoComponents/TodoForm';
+import TodoSearch from './/components/TodoComponents/TodoSearch';
 import { data } from './data';
 import './components/TodoComponents/Todo.css';
 
@@ -11,7 +12,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: data
+      todos: data,
+      search: ''
     };
   }
 
@@ -52,12 +54,28 @@ class App extends React.Component {
     });
   };
 
+  handleSearch = e => {
+    this.setState({
+      search: e.target.value
+    });
+  };
+
   render() {
+    const { search } = this.state;
+    const filteredTodos = this.state.todos.filter(todo => {
+      return todo.task.toLowerCase().includes(search.toLowerCase());
+    });
+
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
+        <TodoSearch
+          search={this.state.search}
+          handleSearch={this.handleSearch}
+        />
         <TodoForm addTodo={this.addTodo} clearCompleted={this.clearCompleted} />
         <TodoList
+          filteredTodos={filteredTodos}
           toggleCompleted={this.toggleCompleted}
           todoList={this.state.todos}
         />
