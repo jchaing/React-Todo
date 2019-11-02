@@ -1,3 +1,9 @@
 .todo.completed {
   text-decoration: line-through;
+  text-decoration-color: red;
+}
+
+.container {
+  background: lightgray;
+  border-radius: 10px;
 }

@@ -4,6 +4,7 @@ import TodoForm from '../src/components/TodoComponents/TodoForm';
 import TodoSearch from './/components/TodoComponents/TodoSearch';
 import { data } from './data';
 import './components/TodoComponents/Todo.css';
+import { Container, Row } from 'reactstrap';
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -67,19 +68,21 @@ class App extends React.Component {
     });
 
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
-        <TodoSearch
-          search={this.state.search}
-          handleSearch={this.handleSearch}
-        />
-        <TodoForm addTodo={this.addTodo} clearCompleted={this.clearCompleted} />
+      <Container className="mt-5 py-4 px-4">
+        <Row className="mb-3">
+          <h2 className="col">React TodoList</h2>
+          <TodoSearch
+            search={this.state.search}
+            handleSearch={this.handleSearch}
+          />
+        </Row>
         <TodoList
           filteredTodos={filteredTodos}
           toggleCompleted={this.toggleCompleted}
           todoList={this.state.todos}
         />
-      </div>
+        <TodoForm addTodo={this.addTodo} clearCompleted={this.clearCompleted} />
+      </Container>
     );
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ListGroupItem } from 'reactstrap';
 
 const Todo = props => {
   console.log(props);
@@ -8,12 +9,12 @@ const Todo = props => {
     console.log(!props.todo.completed);
   };
   return (
-    <div
+    <ListGroupItem
       onClick={handleClick}
-      className={`todo${props.todo.completed ? ' completed' : ''}`}
+      className={`todo${props.todo.completed ? ' completed' : ''} bg-dark text-light`}
     >
-      <p>{props.todo.task}</p>
-    </div>
+      {props.todo.task}
+    </ListGroupItem>
   );
 };
 

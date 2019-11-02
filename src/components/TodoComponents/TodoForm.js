@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Button, Form, InputGroup, Input } from 'reactstrap';
 class TodoForm extends React.Component {
   constructor() {
     super();
@@ -27,18 +27,22 @@ class TodoForm extends React.Component {
   render() {
     console.log(this.state.todoName);
     return (
-
-        <form onSubmit={this.handleSubmit}>
-          <input
-            onChange={this.handleChanges}
-            type="text"
-            placeholder="...todo"
-            value={this.state.todoName}
-          />
-          <button>Add Todo</button>
-          <button onClick={this.props.clearCompleted}>Clear Completed</button>
-        </form>
-
+      <>
+        <Form className="mt-4">
+          <form onSubmit={this.handleSubmit}>
+            <InputGroup>
+              <Input
+                onChange={this.handleChanges}
+                type="text"
+                placeholder="Enter new todo here"
+                value={this.state.todoName}
+              />
+              <Button color="success">Add Todo</Button>
+            </InputGroup>
+          </form>
+        </Form>
+        <Button className="mt-4" color="danger" onClick={this.props.clearCompleted}>Clear Completed</Button>
+      </>
     );
   }
 }

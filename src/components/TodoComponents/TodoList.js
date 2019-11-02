@@ -3,19 +3,22 @@
 
 import React from 'react';
 import Todo from './Todo';
+import { ListGroup } from 'reactstrap';
 
 const TodoList = props => {
   console.log(props);
   return (
     <div>
-      <h3>TodoList</h3>
-      {props.filteredTodos.map(todo => (
-        <Todo
-          key={todo.id}
-          todo={todo}
-          toggleCompleted={props.toggleCompleted}
-        />
-      ))}
+      {/* <h3>TodoList</h3> */}
+      <ListGroup>
+        {props.filteredTodos.map(todo => (
+          <Todo
+            key={todo.id}
+            todo={todo}
+            toggleCompleted={props.toggleCompleted}
+          />
+        ))}
+      </ListGroup>
     </div>
   );
 };
